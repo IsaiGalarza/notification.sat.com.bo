@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  wallet-loans-alerts-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wallet-loans-alerts-service
+    restart: always
+    environment:
+      - PG_HOST=postgresganatech-flexible-qa.postgres.database.azure.com
+      - PG_PORT=5432
+      - PG_USER=adminpssql
+      - PG_PASSWORD=P@Gw8NiD1!
+      - PG_DATABASE=db_billetera_api_qa
+      - PUSH_TITLE=Préstamos
+      - PUSH_MSG_03=Estás a un paso de completar tu préstamo
+      - CRON_EXPRESSION=*/30 * * * *
