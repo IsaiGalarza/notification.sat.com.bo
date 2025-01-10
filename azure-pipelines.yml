@@ -1,0 +1,32 @@
+name: $(Build.SourceBranchName).$(date:yyyyMMdd)$(rev:.r)
+
+# variables:
+#   - group: wallet_loans_alerts
+#   - name: Artifactory.Repository
+#     value: 'build-wallet-loans-alerts'
+
+trigger:
+  branches:
+    include:
+      - develop
+      - release/*
+
+resources:
+  repositories:
+    - repository: self
+      clean: true
+      fetchDepth: 1
+
+stages:
+
+  - stage: Build 
+    displayName: Build artifact
+    jobs:
+      - job: Build
+        displayName: Pipeline CI
+        pool:
+          vmImage: 'ubuntu-latest'
+          demands:
+            - npm 
+        steps:
+          - template: devops/pipelines/build.yml

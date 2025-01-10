@@ -1,0 +1,19 @@
+steps:
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      verbose: false
+  
+  - task: CmdLine@2
+    displayName: 'Remove tests & node modules folders'
+    inputs:
+        script: |
+          rm -rf $(System.DefaultWorkingDirectory)/node_modules
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifact'
+    inputs:
+        PathtoPublish: $(System.DefaultWorkingDirectory)
+        ArtifactName: Wallet_Loans_Alerts_Artifact
+        publishLocation: 'Container'
+ 
