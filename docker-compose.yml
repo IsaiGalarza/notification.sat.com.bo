@@ -20,12 +20,12 @@ services:
       - TEMPLATE_MAIL_MESSAGE='Se ha registrado un nuevo formulario enviado desde un operador móvil a través del SAT Municipal. El evento reportado incluye detalles importantes como fauna afectada, daños forestales, accidentes o incendios. Por favor, revise el formulario adjunto para obtener más información.'
       - CRON_EXPRESSION='*/1 * * * *'
       - DELAY_MINUTES=1
-      - MAIL_HOST='c2252185.ferozo.com'
+      - MAIL_HOST=c2252185.ferozo.com
       - MAIL_PORT=587
-      - MAIL_USER='no-reply@qbit.com.bo'
+      - MAIL_USER=no-reply@qbit.com.bo
       - MAIL_PASS='C**g2xk8bO'
       - MAIL_FROM='"NOTIFICACION SAT" no-reply@qbit.com.bo'
-      - MAIL_RECIPIENTS_TO='isai.galarza@gmail.com, dfernando.urrelo@gmail.com, shirleytaca@ecology-bird.com, ing.dioniciasegovia@gmail.com'
+      - MAIL_RECIPIENTS_TO='ysaigalarzaescalera@gmail.com, dfernando.urrelo@gmail.com, shirleytaca@ecology-bird.com, ing.dioniciasegovia@gmail.com'
       - TELEGRAM_TOKEN='7947017184:AAEU8Fcv3-ZT8mIJIHu5mlIsY5kXEAlNgBI'
       - TELEGRAM_RECIPIENTS_TO=@sat20252025
 
