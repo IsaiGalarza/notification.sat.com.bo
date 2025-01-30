@@ -16,7 +16,16 @@ exports.sendNotifications = async data => {
       const parsedXml = parser.parse(row.xml);
 
       // Extraer los campos específicos
-      const categoria = parsedXml.data.fauna;
+      let categoria = parsedXml.data.fauna || 
+                  parsedXml.data.accidentes || 
+                  parsedXml.data.contaminacion || 
+                  parsedXml.data.antropico || 
+                  parsedXml.data.recuperacion || 
+                  parsedXml.data.delitos || 
+                  parsedXml.data.flora || 
+                  parsedXml.data.violencia || 
+                  parsedXml.data.estado_carretera;
+       
       const foto = parsedXml.data.foto;
       const detalle = parsedXml.data.detalle;
       const coordenada = parsedXml.data.coordenada;
