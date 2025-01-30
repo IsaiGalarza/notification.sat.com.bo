@@ -21,7 +21,7 @@ function formatCoordinates(coordenadas) {
 exports.sendTelegram = async data => {
   try {
     const token = TELEGRAM_TOKEN;
-    const bot = new TelegramBot(token, {polling: false});
+    const bot = new TelegramBot('7947017184:AAEU8Fcv3-ZT8mIJIHu5mlIsY5kXEAlNgBI', {polling: false});
     const {SubmissionID, TITLE, MESSAGE, categoria, foto, detalle, fecha, hora, user, coordenada} = data;
 
     // Read the HTML template telegram
@@ -38,8 +38,7 @@ exports.sendTelegram = async data => {
                                 .replace('%fecha%', fecha)
                                 .replace('%hora%', hora);
 
-
-    bot.sendMessage(TELEGRAM_RECIPIENTS_TO, templateNotification, { parse_mode: 'HTML' });
+    bot.sendMessage('@sat20252025', templateNotification, { parse_mode: 'HTML' });
 
     console.log('Telegram sent:', SubmissionID);
 
