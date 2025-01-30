@@ -1,5 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api');
-const { TELEGRAM_TOKEN, TELEGRAM_RECIPIENTS_TO, TELEGRAM_TEMPLATE_MESSAGE } = require('./config').telegram;
+const fs = require('fs');
+const { promisify } = require('util');
+const { TELEGRAM_TOKEN, TELEGRAM_RECIPIENTS_TO } = require('./config').telegram;
+const readFileAsync = promisify(fs.readFile);
 
 function formatCoordinates(coordenadas) {
   // Dividimos la cadena por los espacios
@@ -21,8 +24,11 @@ exports.sendTelegram = async data => {
     const bot = new TelegramBot(token, {polling: false});
     const {SubmissionID, TITLE, MESSAGE, categoria, foto, detalle, fecha, hora, user, coordenada} = data;
 
+    // Read the HTML template telegram
+    const htmlTelegram = await readFileAsync('/home/nodeuser/app/util/telegram.html', 'utf-8');
+
     //Replace Template
-    const templateNotification = TELEGRAM_TEMPLATE_MESSAGE.replace('%SubmissionID%', SubmissionID)
+    const templateNotification = htmlTelegram.replace('%SubmissionID%', SubmissionID)
                                 .replace('%categoria%', categoria)
                                 .replace('%user%', user)
                                 .replace('%categoria%', categoria)

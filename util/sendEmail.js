@@ -22,8 +22,8 @@ exports.sendEmail = async data => {
     const {SubmissionID, TITLE, MESSAGE, categoria, foto, detalle, fecha, hora, user, coordenada} = data;
 
     // Read the HTML template and image file
-    const htmlTemplate = await readFileAsync('util\\template.html', 'utf-8');
-    const imageAttachment = await readFileAsync('util\\image.jpg');
+    const htmlTemplate = await readFileAsync('/home/nodeuser/app/util/template.html', 'utf-8');
+    const imageAttachment = await readFileAsync('/home/nodeuser/app/util/image.jpg');
 
     const mailSubject = TITLE.replace('{%Number%}', SubmissionID);
     

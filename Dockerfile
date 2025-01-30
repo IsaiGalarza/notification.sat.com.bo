@@ -26,6 +26,7 @@ COPY package*.json ./
 
 # Change the ownership of the application directory to the non-root user
 RUN chown -R nodeuser:nodeuser /home/nodeuser/app
+RUN chmod 777 -R /home/nodeuser/app
 
 # Switch to the non-root user
 USER nodeuser
@@ -39,6 +40,9 @@ COPY *.js *.json *.yml *.md ./
 COPY dataAccess/ ./dataAccess
 COPY services/ ./services
 COPY util/ ./util
+
+EXPOSE 8080
+ENV PORT 8080
 
 # El comando con el cual se inicializara el contenedor
 CMD ["node", "server.js"]
