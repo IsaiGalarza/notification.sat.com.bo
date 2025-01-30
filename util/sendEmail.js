@@ -52,7 +52,7 @@ exports.sendEmail = async data => {
 
     // Send email
     const info = await transporter.sendMail({
-        from: MAIL_FROM,
+        from: '"NOTIFICACION SAT" no-reply@qbit.com.bo',
         to: MAIL_RECIPIENTS_TO,
         subject: mailSubject,
         html: htmlTemplateUpdate,
