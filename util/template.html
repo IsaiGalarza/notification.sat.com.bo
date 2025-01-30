@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación SAT</title>
+</head>
+<body>
+    <h1>Formulario # %SubmissionID%</h1>
+    
+    
+    <!-- Tabla para los detalles del formulario -->
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+            <td><strong>Enviado por:</strong></td>
+            <td>%user%</td>  
+        </tr>
+        <tr>
+            <td><strong>Categoría:</strong></td>
+            <td>%categoria%</td>  
+        <tr>
+            <td><strong>Coordenada:</strong></td>
+            <td>%coordenada%</td>
+        </tr>
+        <tr>
+            <td><strong>Detalle:</strong></td>
+            <td>%detalle%</td>  
+        </tr>
+        <tr>
+            <td><strong>Fecha y hora:</strong></td>
+            <td>%fecha% %hora%</td>  
+        </tr>
+    </table>
+
+    <p>Ver ubicación en el mapa:<a href="https://www.google.com/maps?q=%maps%" target="_blank">Abrir en Google Maps</a></p>
+
+    <p>%MESSAGE%</p>
+
+    <pr/><pr/>
+    <p>Ha sido notificado por el Sistema Municipal SAT, Gracias!</p>
+    <img src="cid:uniqueImageCID" alt="Embedded Image" width="600px;" >
+    
+</body>
+</html>

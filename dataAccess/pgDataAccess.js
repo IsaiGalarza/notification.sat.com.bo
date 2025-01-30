@@ -1,29 +1,17 @@
 const connection = require('./pgConnection');
+const { DELAY_MINUTES } = require('../util/config').config;
 
 exports.getPendings = async () => {
   try {
+   
     const query =
-    `SELECT BLR.account_number
-    FROM business_loan_documents BLD INNER JOIN
-      business_loans_request BLR ON BLD.request_id = BLR.id
-    WHERE BLD.status = 'PARTNER_SIGNING'
-      AND BLD.step_result = 'WAITING'
-      AND date_part('day', CURRENT_TIMESTAMP - BLD.updated_at) = 1;`;
-    const result = await connection.executeSql(query);
-    return result;
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-exports.insertNotifications = async data => {
-  try {
-    const {recipients, batchSize, TITLE, MESSAGE} = data;
-    const query =
-    `INSERT INTO notifications_queue
-      (title, body, priority, retries, recipients, batch_size, created_at, before_to)
-      VALUES ('${TITLE}', '${MESSAGE}', 10, 0, '${recipients}', ${batchSize}, CURRENT_TIMESTAMP, NULL); `;
+    `SELECT A.id as submissionid, B."xml" as xml, C."displayName" as user
+      FROM public.submissions A
+        INNER JOIN public.submission_defs B ON A.id = B."submissionId"
+        INNER JOIN public.actors C ON B."submitterId" = C.id
+      WHERE A.draft = false
+      AND A."createdAt" >= (CURRENT_TIMESTAMP - INTERVAL '${DELAY_MINUTES} minutes');`;
+    
     const result = await connection.executeSql(query);
     return result;
   } catch (err) {

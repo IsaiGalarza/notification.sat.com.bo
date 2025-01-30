@@ -1,11 +1,10 @@
 {
-  "name": "wallet-loans-alerts",
+  "name": "notifications-sat",
   "version": "1.0.0",
-  "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
+  "description": "Enviar notificationes de correo electronico sistema SAT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "keywords": [],
   "author": "",
@@ -13,7 +12,11 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "fast-xml-parser": "^4.5.1",
+    "html-to-text": "^9.0.5",
     "node-cron": "^3.0.3",
+    "node-telegram-bot-api": "^0.66.0",
+    "nodemailer": "^6.9.16",
     "pg": "^8.13.1"
   }
 }
